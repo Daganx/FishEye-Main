@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <title>Fisheye - photographe </title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <img src="assets/images/logo.png" class="logo" />
+    </header>
+    <!-- MAIN -->
+    <main id="main">
+      <!-- PHOTOGRAPH HEADER -->
+      <div class="photograph-header">
+        <button id="open-modal" class="contact_button">Contactez-moi</button>
+      </div>
+    </main>
+    <!-- MODAL -->
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
+          <h2>Contactez-moi</h2>
+          <img id="close-modal"src="assets/icons/close.svg" alt="bouton de fermeture"/>
+        </header>
+        <!-- FORM -->
+				<form name="reserve" action="photographer.html" method="get">
+          <div class="formData">
+            <label for="firstname">Prénom</label>
+            <input class="text-control" type="text" id="firstname" name="firstname"/>
+          </div>
+          <div class="formData">
+            <label for="lastname">Nom</label>
+            <input class="text-control" type="text" id="lastname" name="lastname"/>
+          </div>
+          <div class="formData">
+            <label for="email">E-Mail</label>
+            <input class="text-control" type="email" id="email" name="email"/>
+          </div>
+          <div class="formData">
+            <label for="message">Votre Message</label>
+            <input class="text-control" type="text" id="message" name="message"/>
+          </div>
+          <button class="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+    <button id="sort-by-date">Trier par date</button>
+    <button id="sort-by-likes">Trier par likes</button>
+    <button id="sort-by-title">Trier par titre</button>
+    <!-- MEDIA CONTAINER -->
+    <section id="media-container">
+    </section>
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+    </section>
+    <!-- SCRIPT -->
+    <script type="module" src="/scripts/pages/photographer.js" defer></script>
+    <script type="module" src="/scripts/templates/mediaSorting.js" defer></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+  </body>
+</html>
