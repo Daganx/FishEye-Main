@@ -21,57 +21,57 @@ class Lightbox {
         this.lightboxContainer = document.createElement('div');
         this.lightboxContainer.classList.add('lightbox-container');
         document.body.appendChild(this.lightboxContainer);
-    
+
         this.lightboxContent = document.createElement('div');
         this.lightboxContent.classList.add('lightbox-content');
         this.lightboxContainer.appendChild(this.lightboxContent);
-    
-        this.btnClose = document.createElement('button');
+
+        this.btnClose = document.createElement('i');
         this.btnClose.classList.add('lightbox-close');
-        this.btnClose.textContent = 'Fermer';
+        this.btnClose.innerHTML = '<i class="fa-solid fa-times"></i>';
         this.lightboxContainer.appendChild(this.btnClose);
-    
-        this.btnNext = document.createElement('button');
+
+        this.btnNext = document.createElement('i');
         this.btnNext.classList.add('lightbox-next');
-        this.btnNext.textContent = 'Suivant';
+        this.btnNext.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
         this.lightboxContainer.appendChild(this.btnNext);
-    
-        this.btnPrev = document.createElement('button');
+
+        this.btnPrev = document.createElement('i');
         this.btnPrev.classList.add('lightbox-prev');
-        this.btnPrev.textContent = 'Précédent';
+        this.btnPrev.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
         this.lightboxContainer.appendChild(this.btnPrev);
 
-        this.videoElement = document.querySelector('video');
+        this.videoElement = document.createElement('video');
         this.videoElement.setAttribute('controls', 'true');
-        this.videoElement.setAttribute('autoplay', 'true'); // Ajoutez cette ligne pour activer les contrôles de la vidéo
+        this.videoElement.setAttribute('autoplay', 'true');
         this.lightboxContent.appendChild(this.videoElement);
-    
     }
+
     showMedia() {
+        // Récupère l'index
         const currentTrigger = this.mediaTriggers[this.currentIndex];
-        const mediaContainer = currentTrigger.cloneNode(true);
-    
-        const mediaElements = mediaContainer.querySelectorAll('img, video');
-        mediaElements.forEach(media => {
-            console.log('TagName:', media.tagName);
-            if (media.tagName === 'IMG') {
-                const photographerName = mediaContainer.dataset.photographer;
-                console.log('Photographer Name:', photographerName);
-                media.src = `assets/images/${photographerName}/${media.src}`;
-            } else if (media.tagName === 'VIDEO') {
-                console.log('Inside VIDEO condition');
-                const photographerName = mediaContainer.dataset.photographer;
-                console.log('Photographer Name:', photographerName);
-                media.src = `assets/images/${photographerName}/${media.src}`;
-                media.controls = true; // Ajoutez cette ligne pour activer les contrôles de la vidéo
-                this.videoElement = media; // Stockez la référence à la balise vidéo
-                console.log('Balise vidéo stockée :', this.videoElement);
-            }
-        });
-    
+        // Supprime tous les enfants de la lightboxContent
         this.lightboxContent.innerHTML = '';
-        this.lightboxContent.appendChild(mediaContainer);
+        // Crée une nouvelle vidéo ou une nouvelle image
+        const mediaElement = currentTrigger.tagName === 'VIDEO' ? document.createElement('video') : document.createElement('img');
+        // Utilise directement le chemin d'accès existant si la balise vidéo existe
+        const mediaPath = currentTrigger.tagName === 'VIDEO' ? (currentTrigger.dataset.src || currentTrigger.src) : currentTrigger.src;
+        // Ajout des dataset
+        mediaElement.src = mediaPath;
+        mediaElement.dataset.likes = currentTrigger.dataset.likes;
+        mediaElement.dataset.date = currentTrigger.dataset.date;
+        mediaElement.dataset.title = currentTrigger.dataset.title;
+        mediaElement.classList.add('lightbox-trigger');
+        // Ajoute la vidéo ou l'image à la lightboxContent
+        this.lightboxContent.appendChild(mediaElement);
+
+        if (mediaElement.tagName === 'VIDEO') {
+            mediaElement.controls = true;
+            mediaElement.autoplay = true;
+            this.videoElement = mediaElement;
+        }
     }
+
     setupEventListeners() {
         this.btnClose.addEventListener('click', () => this.closeLightbox());
         this.btnNext.addEventListener('click', () => this.nextMedia());

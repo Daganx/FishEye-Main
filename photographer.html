@@ -4,26 +4,32 @@
     <meta charset="utf-8">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <!-- HEADER -->
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <!-- MAIN -->
     <main id="main">
       <!-- PHOTOGRAPH HEADER -->
-      <div class="photograph-header">
-        <button id="open-modal" class="contact_button">Contactez-moi</button>
-      </div>
-    </main>
+      <section class="photograph-header">
+      </section>
+    
     <!-- MODAL -->
-    <div id="contact_modal">
+    <section id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <div>
+            <h2>Contactez-moi</h2>
+            <p id="modal-name"></p>
+          </div>
+          
           <img id="close-modal"src="assets/icons/close.svg" alt="bouton de fermeture"/>
         </header>
         <!-- FORM -->
@@ -47,19 +53,27 @@
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
-    </div>
-    <button id="sort-by-date">Trier par date</button>
-    <button id="sort-by-likes">Trier par likes</button>
-    <button id="sort-by-title">Trier par titre</button>
+    </section>
+    <section class="sorting-container">
+      <div>
+          <label for="sorting-select">Trier par</label>
+          <select id="sorting-select">
+              <option value="date">Date</option>
+              <option value="likes">Likes</option>
+              <option value="title">Titre</option>
+          </select>
+      </div>
+  </section>
+    
     <!-- MEDIA CONTAINER -->
     <section id="media-container">
     </section>
     <!-- STATS SECTION -->
     <section class="stats-section">
     </section>
+  </main>
     <!-- SCRIPT -->
     <script type="module" src="/scripts/pages/photographer.js" defer></script>
-    <script type="module" src="/scripts/templates/mediaSorting.js" defer></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js" defer></script>
   </body>
 </html>

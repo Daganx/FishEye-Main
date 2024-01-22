@@ -40,7 +40,7 @@ class TemplateMedias {
                 const likesElement = document.createElement('p');
                 likesElement.classList.add('media-likes');
                 likesElement.textContent = `${media.likes}`;
-                figcaptionElement.appendChild(likesElement);;
+                figcaptionElement.appendChild(likesElement);
 
                 mediaFigure.appendChild(mediaElement);
                 mediaFigure.appendChild(figcaptionElement);

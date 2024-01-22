@@ -2,19 +2,27 @@ class PhotographerStats {
     static displayPhotographerStats(jsonData, targetPhotographerId) {
         const photographer = jsonData.photographers.find(photographer => photographer.id === parseInt(targetPhotographerId));
         const mediaDataArray = jsonData.media.filter(mediaData => mediaData.photographerId === parseInt(targetPhotographerId));
-
         if (photographer && mediaDataArray.length > 0) {
-            const statsSection = document.querySelector('.stats-section')
+            const statsSection = document.querySelector('.stats-section');
             // Calcul des likes totaux
             const totalLikes = mediaDataArray.reduce((total, media) => total + media.likes, 0);
-            // Création des éléments d'informations statistiques
-            const likesElement = document.createElement('p');
-            likesElement.textContent = `Likes : ${totalLikes}`;
-
+            // Création de la div pour les éléments likesText et heart
+            const likesContainer = document.createElement('div');
+            likesContainer.classList.add('likes-container');
+            // Création de l'élément likesText
+            const likesTextElement = document.createElement('p');
+            likesTextElement.textContent = `${totalLikes}`;
+            // Création de l'élément heart
+            const heartElement = document.createElement('i');
+            heartElement.classList.add('fa-solid', 'fa-heart');
+            // Ajout des éléments à la div
+            likesContainer.appendChild(likesTextElement);
+            likesContainer.appendChild(heartElement);
+            // Création de l'élément price
             const priceElement = document.createElement('p');
-            priceElement.textContent = `Prix : ${photographer.price}€/jour`;
-            // Ajout des éléments à la section "stats"
-            statsSection.appendChild(likesElement);
+            priceElement.textContent = `${photographer.price}€/jour`;
+            // Ajout de la div (contenant likesText et heart) et price à la section des statistiques
+            statsSection.appendChild(likesContainer);
             statsSection.appendChild(priceElement);
         }
     }

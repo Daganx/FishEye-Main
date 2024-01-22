@@ -1,23 +1,16 @@
-const btnOpen = document.getElementById('open-modal');
-const btnClose = document.getElementById('close-modal');
-const modal = document.getElementById("contact_modal");
-function displayModal() {
-	modal.style.display = "block";
+function displayName(jsonData, targetPhotographerId){
+  const modalName = document.getElementById("modal-name");
+  const photographer = jsonData.photographers.find(photographer => photographer.id === parseInt(targetPhotographerId));
+  modalName.textContent = `${photographer.name}`
 }
-function closeModal() {
-    modal.style.display = "none";
-}
-btnOpen.addEventListener("click", (displayModal));
-btnClose.addEventListener("click", (closeModal));
-// INPUT FORM 
 const form = document.querySelector('form');
 const firstNameInput = document.getElementById('firstname');
 const lastNameInput = document.getElementById('lastname');
 const emailInput = document.getElementById('email');
 const messageInput = document.getElementById('message');
 // REGEX 
-const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$"); // Text Regex
-const regExpEmail = new RegExp('^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$'); // Mail Regex
+const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$");
+const regExpEmail = new RegExp('^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$');
 // FUNCTIONS VALIDATION
 function checkFirstName(input){
     if (input.value.length >= 2 && regExpText.test(input.value)){
@@ -62,3 +55,5 @@ form.addEventListener('submit', (event) => {
             return false;
         }
 })
+
+export {displayName}

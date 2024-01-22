@@ -1,32 +1,52 @@
 class TemplateUserCard {
     static getUserCardDOM(photographer) {
         const photographerSection = document.querySelector('.photographer_section');
-        const article = document.createElement('article');
+        
+        const li = document.createElement('li');
+        li.setAttribute("role", 'listitem');
+
         const img = document.createElement('img');
+        img.setAttribute("tabIndex", '0');
+        img.setAttribute("aria-label", `Photo de ${photographer.name}`);
         img.setAttribute("src", `assets/photographers/${photographer.portrait}`);
+        img.setAttribute("alt",`${photographer.name}`);
+        
         img.addEventListener('click', () => {
             window.location.href = `/photographer.html?id=${photographer.id}`;
         });
 
+        img.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                window.location.href = `/photographer.html?id=${photographer.id}`;
+            }
+        });
+
         const h2 = document.createElement('h2');
         h2.textContent = photographer.name;
+        h2.setAttribute("aria-label",`${photographer.name}` )
+        h2.addEventListener('click', () => {
+            window.location.href = `/photographer.html?id=${photographer.id}`;
+        });
 
         const cityElement = document.createElement('p');
-        cityElement.textContent = `${photographer.city} ${photographer.country}`;
+        cityElement.textContent = `${photographer.city}, ${photographer.country}`;
+        cityElement.setAttribute("aria-label", `Lieu : ${photographer.city}, ${photographer.country}`)
 
         const taglineElement = document.createElement('p');
         taglineElement.textContent = photographer.tagline;
+        taglineElement.setAttribute("aria-label", `Tagline : ${photographer.tagline}`)
 
         const priceElement = document.createElement('p');
         priceElement.textContent = `${photographer.price}€/jour`;
+        priceElement.setAttribute("aria-label", `Prix : ${photographer.price}€/Jour`)
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(cityElement);
-        article.appendChild(taglineElement);
-        article.appendChild(priceElement);
+        li.appendChild(img);
+        li.appendChild(h2);
+        li.appendChild(cityElement);
+        li.appendChild(taglineElement);
+        li.appendChild(priceElement);
 
-        photographerSection.appendChild(article);
+        photographerSection.appendChild(li);
 
         return photographerSection;
     }
