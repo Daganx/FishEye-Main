@@ -234,6 +234,14 @@ form input {
     cursor: pointer;
 }
 
+.media-name-container{
+    position: absolute;
+    color: white;
+    font-size: 32px;
+    bottom: 0;
+    margin: 0;
+}
+
 .stats-section{
     position: fixed;
     right: 20px;

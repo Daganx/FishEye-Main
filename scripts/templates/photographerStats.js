@@ -1,3 +1,5 @@
+let totalLikes = 0;
+
 class PhotographerStats {
     static displayPhotographerStats(jsonData, targetPhotographerId) {
         const photographer = jsonData.photographers.find(photographer => photographer.id === parseInt(targetPhotographerId));
@@ -5,7 +7,7 @@ class PhotographerStats {
         if (photographer && mediaDataArray.length > 0) {
             const statsSection = document.querySelector('.stats-section');
             // Calcul des likes totaux
-            const totalLikes = mediaDataArray.reduce((total, media) => total + media.likes, 0);
+            totalLikes = mediaDataArray.reduce((total, media) => total + media.likes, 0);
             // Création de la div pour les éléments likesText et heart
             const likesContainer = document.createElement('div');
             likesContainer.classList.add('likes-container');
@@ -28,4 +30,12 @@ class PhotographerStats {
     }
 }
 
-export { PhotographerStats };
+function incrementTotalLikes() {
+    const totalLikesElement = document.querySelector('.likes-container p');
+    // Incrémente le total des likes
+    totalLikes++;
+    // Met à jour l'affichage du total des likes
+    totalLikesElement.textContent = `${totalLikes}`;
+}
+
+export { PhotographerStats, incrementTotalLikes };

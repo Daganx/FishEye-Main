@@ -45,6 +45,10 @@ class Lightbox {
         this.videoElement.setAttribute('controls', 'true');
         this.videoElement.setAttribute('autoplay', 'true');
         this.lightboxContent.appendChild(this.videoElement);
+
+        this.mediaNameContainer = document.createElement('p');
+        this.mediaNameContainer.classList.add('media-name-container');
+        this.lightboxContainer.appendChild(this.mediaNameContainer);
     }
 
     showMedia() {
@@ -70,6 +74,8 @@ class Lightbox {
             mediaElement.autoplay = true;
             this.videoElement = mediaElement;
         }
+        const mediaName = currentTrigger.dataset.title || '';
+        this.mediaNameContainer.textContent = mediaName;
     }
 
     setupEventListeners() {
