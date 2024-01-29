@@ -1,79 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>Fisheye - photographe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Fisheye - photographe </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
   </head>
   <body>
     <!-- HEADER -->
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" alt="Fisheye Home Page" aria-label="lien vers la page d'accueil fishEye">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="logo Fisheye"
+          aria-label="logo Fisheye"
+        />
       </a>
     </header>
     <!-- MAIN -->
     <main id="main">
       <!-- PHOTOGRAPH HEADER -->
-      <section class="photograph-header">
+      <section
+        class="photograph-header"
+        aria-label="section information de notre photographe"
+      ></section>
+
+      <!-- MODAL -->
+      <section aria-hidden="true" id="contact_modal">
+        <section class="modal">
+          <header>
+            <div>
+              <h2>Contactez-moi</h2>
+              <h2 id="modal-name"></h2>
+            </div>
+            <img
+              id="close-modal"
+              src="assets/icons/close.svg"
+              alt="bouton de fermeture modal"
+            />
+          </header>
+          <!-- FORM -->
+          <form name="reserve" action="photographer.html" method="get">
+            <section class="formData">
+              <label for="firstname">Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="firstname"
+                name="firstname"
+              />
+            </section>
+            <section class="formData">
+              <label for="lastname">Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="lastname"
+                name="lastname"
+              />
+            </section>
+            <section class="formData">
+              <label for="email">E-Mail</label>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              />
+            </section>
+            <section class="formData">
+              <label for="message">Votre Message</label>
+              <input
+                class="text-control"
+                type="text"
+                id="message"
+                name="message"
+              />
+            </section>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </section>
       </section>
-    
-    <!-- MODAL -->
-    <section id="contact_modal">
-      <div class="modal">
-        <header>
-          <div>
-            <h2>Contactez-moi</h2>
-            <p id="modal-name"></p>
-          </div>
-          
-          <img id="close-modal"src="assets/icons/close.svg" alt="bouton de fermeture"/>
-        </header>
-        <!-- FORM -->
-				<form name="reserve" action="photographer.html" method="get">
-          <div class="formData">
-            <label for="firstname">Prénom</label>
-            <input class="text-control" type="text" id="firstname" name="firstname"/>
-          </div>
-          <div class="formData">
-            <label for="lastname">Nom</label>
-            <input class="text-control" type="text" id="lastname" name="lastname"/>
-          </div>
-          <div class="formData">
-            <label for="email">E-Mail</label>
-            <input class="text-control" type="email" id="email" name="email"/>
-          </div>
-          <div class="formData">
-            <label for="message">Votre Message</label>
-            <input class="text-control" type="text" id="message" name="message"/>
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    </section>
-    <section class="sorting-container">
-      <div>
-          <label for="sorting-select">Trier par</label>
-          <select id="sorting-select">
-              <option value="date">Date</option>
-              <option value="likes">Likes</option>
-              <option value="title">Titre</option>
-          </select>
-      </div>
-  </section>
-    
-    <!-- MEDIA CONTAINER -->
-    <section id="media-container">
-    </section>
-    <!-- STATS SECTION -->
-    <section class="stats-section">
-    </section>
-  </main>
+
+      <section class="sorting-container">
+        <p>Trier par</p>
+        <menu id="sorting-buttons">
+          <button id="show-sorting-options">----</button>
+          <li id="sorting-options" class="sorting-options">
+            <button id="sort-by-likes">Popularité</button>
+            <button id="sort-by-date">Date</button>
+            <button id="sort-by-title">Titre</button>
+          </li>
+        </menu>
+      </section>
+
+      <!-- MEDIA CONTAINER -->
+      <section id="media-container"></section>
+      <!-- STATS SECTION -->
+      <section class="stats-section"></section>
+    </main>
     <!-- SCRIPT -->
-    <script type="module" src="/scripts/pages/photographer.js" defer></script>
-    <script type="module" src="/scripts/utils/contactForm.js" defer></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

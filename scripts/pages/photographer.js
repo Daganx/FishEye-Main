@@ -17,8 +17,6 @@ async function displayPhotographerPage() {
         PhotographerAbout.displayPhotographerInfo(jsonData, targetPhotographerId);
         // Affichage des médias
         TemplateMedias.displayMedias(jsonData, targetPhotographerId);
-        // Tri des médias 
-        MediaSorting.sortMedia('media-container', 'date');
         // Initialisation LightBox
         Lightbox.init();
         // Affichage des statistiques du photographe
@@ -26,7 +24,7 @@ async function displayPhotographerPage() {
         // Affichage nom du photographe Modal Contact
         displayName(jsonData, targetPhotographerId);
         // Initialisation du Tri sur élément Select
-        MediaSorting.initSortingSelect();
+        MediaSorting.initSortingButtons();
     } catch (error) {
         console.error('Erreur lors de la récupération du fichier JSON:', error);
     }

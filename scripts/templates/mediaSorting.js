@@ -36,15 +36,43 @@ class MediaSorting {
         }
 
         mediaContainer.innerHTML = '';
-        mediaList.forEach(article => {
-            mediaContainer.appendChild(article);
+        mediaList.forEach(figure => {
+            mediaContainer.appendChild(figure);
         });
-    }
-        static initSortingSelect() {
-        const sortingSelect = document.getElementById('sorting-select');
-        sortingSelect.addEventListener('change', () => {
-            const selectedValue = sortingSelect.value;
-            MediaSorting.sortMedia('media-container', selectedValue);
+    } 
+    static initSortingButtons() {
+        const sortingButtons = document.getElementById('sorting-buttons');
+        const sortingOptions = document.getElementById('sorting-options');
+        const showSortingOptionsButton = document.getElementById('show-sorting-options');
+        
+        sortingButtons.addEventListener('click', (event) => {
+            const selectedButtonId = event.target.id;
+
+            if (selectedButtonId === 'show-sorting-options') {
+                sortingOptions.style.display = sortingOptions.style.display === 'block' ? 'none' : 'block';
+    
+            } else {
+                sortingOptions.style.display = 'none';
+
+                if (selectedButtonId !== 'sorting-buttons') {
+                    // Mettez à jour le texte du bouton show-sorting-options en fonction du bouton cliqué
+                    showSortingOptionsButton.innerHTML = `${event.target.textContent}`;
+
+                    switch (selectedButtonId) {
+                        case 'sort-by-date':
+                            MediaSorting.sortMedia('media-container', 'date');
+                            break;
+                        case 'sort-by-likes':
+                            MediaSorting.sortMedia('media-container', 'likes');
+                            break;
+                        case 'sort-by-title':
+                            MediaSorting.sortMedia('media-container', 'title');
+                            break;
+                        default: 
+                            break;
+                    }
+                }
+            }
         });
     }
 }

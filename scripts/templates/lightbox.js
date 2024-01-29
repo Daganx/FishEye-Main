@@ -48,7 +48,7 @@ class Lightbox {
 
         this.mediaNameContainer = document.createElement('p');
         this.mediaNameContainer.classList.add('media-name-container');
-        this.lightboxContainer.appendChild(this.mediaNameContainer);
+        // this.lightboxContent.appendChild(this.mediaNameContainer);
     }
 
     showMedia() {
@@ -68,6 +68,7 @@ class Lightbox {
         mediaElement.classList.add('lightbox-trigger');
         // Ajoute la vidéo ou l'image à la lightboxContent
         this.lightboxContent.appendChild(mediaElement);
+        this.lightboxContent.appendChild(this.mediaNameContainer)
 
         if (mediaElement.tagName === 'VIDEO') {
             mediaElement.controls = true;

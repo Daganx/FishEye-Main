@@ -68,6 +68,7 @@ h1 {
     margin-bottom: 4px;
 }
 
-.photographer_section article p:nth-child(5){
-    font-weight: lighter;
+.photographer_section li p:nth-child(5){
+    font-weight: 100;
 }
+

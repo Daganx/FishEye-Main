@@ -36,6 +36,7 @@ function checkEmail(input){
 // SUBMISSION FORM 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    const modal = document.getElementById('contact_modal')
 
     const isFirstNameValid = checkFirstName(firstNameInput);
     const isLastNameValid = checkLastName(lastNameInput);
