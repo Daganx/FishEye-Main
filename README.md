@@ -19,8 +19,16 @@ Vous pouvez accéder au projet en suivant ce lien : [FishEye](https://daganx.git
 Assurez-vous d'utiliser les versions suivantes des logiciels pour une compatibilité optimale :
 
 - **Navigateur web:** Chrome v80+, Firefox v75+, Safari v13+, Edge v80+
-- **Node.js:** v14.x
 - **npm:** v6.x
+- - **VSCODE:** Version : 1.85.2 (Universal)
+Validation : 8b3775030ed1a69b13e4f4c628c612102e30a681
+Date : 2024-01-18T06:40:32.531Z
+Electron : 25.9.7
+ElectronBuildId : 26354273
+Chromium : 114.0.5735.289
+Node.js : 18.15.0
+V8 : 11.4.183.29-electron.0
+Système d’exploitation : Darwin x64 21.6.0
 
 ## Installation
 
