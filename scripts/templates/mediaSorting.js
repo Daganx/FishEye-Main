@@ -55,7 +55,6 @@ class MediaSorting {
                 sortingOptions.style.display = 'none';
 
                 if (selectedButtonId !== 'sorting-buttons') {
-                    // Mettez à jour le texte du bouton show-sorting-options en fonction du bouton cliqué
                     showSortingOptionsButton.innerHTML = `${event.target.textContent}`;
 
                     switch (selectedButtonId) {

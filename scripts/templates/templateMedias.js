@@ -37,6 +37,7 @@ class TemplateMedias {
         mediaElement.alt = ""
         mediaElement.classList.add("lightbox-trigger");
         mediaElement.setAttribute("data-id", media.id);
+        mediaElement.setAttribute("tabindex", "0");
 
         const figcaptionElement = document.createElement("figcaption");
         figcaptionElement.classList.add("media-figcaption");
@@ -54,6 +55,7 @@ class TemplateMedias {
 
         const likeIcon = document.createElement("i");
         likeIcon.classList.add("fa-regular", "fa-heart");
+        likeIcon.setAttribute("tabindex", "0")
 
         likesContainer.appendChild(likesCountElement);
         likesContainer.appendChild(likeIcon);
@@ -61,13 +63,17 @@ class TemplateMedias {
         mediaFigure.appendChild(mediaElement);
         mediaFigure.appendChild(figcaptionElement);
         mediaContainer.appendChild(mediaFigure);
-
-        // Ajoute un gestionnaire d'événements pour le clic sur l'icône cœur
+  
         likeIcon.addEventListener("click", () => {
           // Récupère l'identifiant unique du média
           const mediaId = mediaElement.getAttribute("data-id");
-          // Appelle la fonction pour incrémenter les likes du média
           toggleLikes(mediaId);
+        });
+        likeIcon.addEventListener("keydown", (event) => {
+          const mediaId = mediaElement.getAttribute("data-id");
+          if (event.key === 'Enter'){
+            toggleLikes(mediaId);
+          }
         });
 
         function toggleLikes(mediaId) {
@@ -77,38 +83,26 @@ class TemplateMedias {
             .querySelector(".media-likes");
 
           if (media.isLiked) {
-            // Si déjà liké, appelle la fonction pour décrémenter les likes du média
+            // Si déjà like, appelle la fonction pour décrémenter les likes du média
             decrementLikes(mediaId);
             decrementTotalLikes();
           } else {
-            // Si non liké, appelle la fonction pour incrémenter les likes du média
             incrementLikes(mediaId);
             incrementTotalLikes();
           }
-
           // Inverse l'état du like
           media.isLiked = !media.isLiked;
         }
 
         function incrementLikes(mediaId) {
-          // Incrémente le nombre de likes
           media.likes++;
-
-          // Met à jour le contenu de l'élément likesCountElement sans réaffecter les gestionnaires d'événements
           likesCountElement.textContent = media.likes;
-
-          // Change l'icône pour indiquer que le média est liké
           likeIcon.classList.replace("fa-regular", "fas");
         }
 
         function decrementLikes(mediaId) {
-          // Décrémente le nombre de likes
           media.likes--;
-
-          // Met à jour le contenu de l'élément likesCountElement sans réaffecter les gestionnaires d'événements
           likesCountElement.textContent = media.likes;
-
-          // Change l'icône pour indiquer que le média n'est pas liké
           likeIcon.classList.replace("fas", "fa-regular");
         }
       }

@@ -6,6 +6,12 @@ class Lightbox {
                 const mediaIndex = mediaTriggers.indexOf(event.currentTarget);
                 new Lightbox(mediaTriggers, mediaIndex);
             });
+            trigger.addEventListener('keydown', event => {
+                if (event.key === 'Enter') {
+                    const mediaIndex = mediaTriggers.indexOf(event.currentTarget);
+                    new Lightbox(mediaTriggers, mediaIndex);
+                }
+            });
         });
     }
 
@@ -18,11 +24,11 @@ class Lightbox {
     }
 
     buildLightbox() {
-        this.lightboxContainer = document.createElement('div');
+        this.lightboxContainer = document.createElement('section');
         this.lightboxContainer.classList.add('lightbox-container');
         document.body.appendChild(this.lightboxContainer);
 
-        this.lightboxContent = document.createElement('div');
+        this.lightboxContent = document.createElement('section');
         this.lightboxContent.classList.add('lightbox-content');
         this.lightboxContainer.appendChild(this.lightboxContent);
 

@@ -4,7 +4,7 @@ class PhotographerAbout {
 
         if (photographer) {
             const photographHeader = document.querySelector('.photograph-header');
-            // Création des éléments
+            
             const infoContainer = document.createElement('section');
             infoContainer.classList.add('photographer-info');
 
@@ -36,7 +36,6 @@ class PhotographerAbout {
             const buttonContainer = document.createElement('section');
             buttonContainer.classList.add('button-container');
 
-            // Création du bouton "Contactez-moi"
             const contactButton = document.createElement('button');
             contactButton.textContent = 'Contactez-moi';
             contactButton.id = 'open-modal';
@@ -47,9 +46,8 @@ class PhotographerAbout {
                 const modal = document.getElementById("contact_modal");
                 modal.style.display = "flex";
             });
-            // Ajout du bouton au container
+            
             buttonContainer.appendChild(contactButton);
-            // Ajout des contenairs au header
             photographHeader.appendChild(infoContainer);
             photographHeader.appendChild(buttonContainer);
             photographHeader.appendChild(photoContainer);
@@ -58,7 +56,7 @@ class PhotographerAbout {
             modalBtnClose.addEventListener("click", () => {
                 const modal = document.getElementById('contact_modal');
                 modal.style.display = "none";
-            })
+            });
         }
     }
 }

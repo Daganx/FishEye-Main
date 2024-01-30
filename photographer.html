@@ -20,27 +20,29 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header>
+    <header role="banner">
       <a href="index.html" alt="Fisheye Home Page" aria-label="lien vers la page d'accueil fishEye">
         <img
           src="assets/images/logo.png"
           class="logo"
           alt="logo Fisheye"
           aria-label="logo Fisheye"
+          role="img"
         />
       </a>
     </header>
     <!-- MAIN -->
-    <main id="main">
+    <main id="main" role="main">
       <!-- PHOTOGRAPH HEADER -->
       <section
         class="photograph-header"
+        role="region"
         aria-label="section information de notre photographe"
       ></section>
 
       <!-- MODAL -->
-      <section aria-hidden="true" id="contact_modal">
-        <section class="modal">
+      <section role="region" aria-hidden="true" id="contact_modal">
+        <section tabindex="-1" aria-hidden="true" class="modal">
           <header>
             <div>
               <h2>Contactez-moi</h2>
@@ -50,10 +52,13 @@
               id="close-modal"
               src="assets/icons/close.svg"
               alt="bouton de fermeture modal"
+              aria-label="bouton de fermeture modal"
+              role="button"
+              tabindex="0"
             />
           </header>
           <!-- FORM -->
-          <form name="reserve" action="photographer.html" method="get">
+          <form name="reserve" action="photographer.html" method="get" role="form">
             <section class="formData">
               <label for="firstname">Prénom</label>
               <input
@@ -90,27 +95,27 @@
                 name="message"
               />
             </section>
-            <button class="contact_button">Envoyer</button>
+            <button role="button" class="contact_button">Envoyer</button>
           </form>
         </section>
       </section>
 
-      <section class="sorting-container">
+      <section role="region" class="sorting-container">
         <p>Trier par</p>
         <menu id="sorting-buttons">
-          <button id="show-sorting-options">----</button>
+          <button aria-haspopup="true" role="button" id="show-sorting-options">----</button>
           <li id="sorting-options" class="sorting-options">
-            <button id="sort-by-likes">Popularité</button>
-            <button id="sort-by-date">Date</button>
-            <button id="sort-by-title">Titre</button>
+            <button role="button" aria-label="Tri par likes" id="sort-by-likes">Popularité</button>
+            <button role="button" aria-label="Tri par date" id="sort-by-date">Date</button>
+            <button role="button" aria-label="Tri par titre" id="sort-by-title">Titre</button>
           </li>
         </menu>
       </section>
 
       <!-- MEDIA CONTAINER -->
-      <section id="media-container"></section>
+      <section role="region" aria-label="Section des médias" id="media-container"></section>
       <!-- STATS SECTION -->
-      <section class="stats-section"></section>
+      <section role="region" aria-label="Section des stats du photographe" class="stats-section"></section>
     </main>
     <!-- SCRIPT -->
     <script type="module" src="scripts/pages/photographer.js" defer></script>
