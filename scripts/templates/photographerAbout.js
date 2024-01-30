@@ -41,7 +41,8 @@ class PhotographerAbout {
             contactButton.id = 'open-modal';
             contactButton.classList.add('contact_button');
             contactButton.setAttribute("aria-label", "Contactez-moi");
-            contactButton.setAttribute("tabindex", "0")
+            contactButton.setAttribute("tabindex", "0");
+
             contactButton.addEventListener('click', () => {
                 const modal = document.getElementById("contact_modal");
                 modal.style.display = "flex";
@@ -57,6 +58,13 @@ class PhotographerAbout {
                 const modal = document.getElementById('contact_modal');
                 modal.style.display = "none";
             });
+            modalBtnClose.addEventListener("keydown", (event) => {
+                const modal = document.getElementById('contact_modal');
+                if(event.key === 'Enter'){
+                    modal.style.display = "none";
+                }
+                
+            })
         }
     }
 }
