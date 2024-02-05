@@ -1,7 +1,10 @@
 import { MediaFactory } from "../factory/mediaFactory.js";
 import { VideoMedia } from "../classes/media.js";
-import { incrementTotalLikes, decrementTotalLikes } from "../templates/photographerStats.js";
-
+import {
+  incrementTotalLikes,
+  decrementTotalLikes,
+} from "../templates/photographerStats.js";
+// Affichage des médias du photographe
 class TemplateMedias {
   static displayMedias(jsonData, targetPhotographerId) {
     const mediaFactory = new MediaFactory();
@@ -34,16 +37,18 @@ class TemplateMedias {
         mediaElement.dataset.likes = media.likes;
         mediaElement.dataset.date = media.date;
         mediaElement.dataset.title = media.title;
-        mediaElement.alt = ""
+        mediaElement.alt = "";
         mediaElement.classList.add("lightbox-trigger");
         mediaElement.setAttribute("data-id", media.id);
         mediaElement.setAttribute("tabindex", "0");
+        mediaElement.setAttribute("aria-label", `${media.title}`)
 
         const figcaptionElement = document.createElement("figcaption");
         figcaptionElement.classList.add("media-figcaption");
 
         const nameElement = document.createElement("h2");
         nameElement.classList.add("media-name");
+        nameElement.setAttribute("tabindex", "0");
         nameElement.textContent = `${media.title}`;
         figcaptionElement.appendChild(nameElement);
 
@@ -52,10 +57,13 @@ class TemplateMedias {
 
         const likesCountElement = document.createElement("span");
         likesCountElement.textContent = media.likes;
+        likesCountElement.setAttribute("tabindex", "0");
+        likesCountElement.setAttribute("aria-label", `${media.likes} likes`);
 
         const likeIcon = document.createElement("i");
         likeIcon.classList.add("fa-regular", "fa-heart");
-        likeIcon.setAttribute("tabindex", "0")
+        likeIcon.setAttribute("tabindex", "0");
+        likeIcon.setAttribute("aria-label", "appuyez sur entrer pour liker")
 
         likesContainer.appendChild(likesCountElement);
         likesContainer.appendChild(likeIcon);
@@ -63,7 +71,7 @@ class TemplateMedias {
         mediaFigure.appendChild(mediaElement);
         mediaFigure.appendChild(figcaptionElement);
         mediaContainer.appendChild(mediaFigure);
-  
+
         likeIcon.addEventListener("click", () => {
           // Récupère l'identifiant unique du média
           const mediaId = mediaElement.getAttribute("data-id");
@@ -71,7 +79,7 @@ class TemplateMedias {
         });
         likeIcon.addEventListener("keydown", (event) => {
           const mediaId = mediaElement.getAttribute("data-id");
-          if (event.key === 'Enter'){
+          if (event.key === "Enter") {
             toggleLikes(mediaId);
           }
         });

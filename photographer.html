@@ -41,8 +41,8 @@
       ></section>
 
       <!-- MODAL -->
-      <section role="region" aria-hidden="true" id="contact_modal">
-        <section tabindex="0" aria-hidden="true" class="modal">
+      <section role="dialog" aria-labelledby="modal-name" id="contact_modal">
+        <section tabindex="0"  class="modal">
           <header>
             <div>
               <h2>Contactez-moi</h2>
@@ -95,7 +95,7 @@
                 name="message"
               />
             </section>
-            <button role="button" class="contact_button">Envoyer</button>
+            <button aria-label="Envoyer" role="button" class="contact_button">Envoyer</button>
           </form>
         </section>
       </section>
@@ -103,7 +103,7 @@
       <section role="region" class="sorting-container">
         <p>Trier par</p>
         <menu id="sorting-buttons">
-          <button aria-haspopup="true" role="button" id="show-sorting-options">----</button>
+          <button aria-haspopup="true" role="listbox" aria-expanded="true" id="show-sorting-options">----</button>
           <li id="sorting-options" class="sorting-options">
             <button role="button" aria-label="Tri par likes" id="sort-by-likes">Popularité</button>
             <button role="button" aria-label="Tri par date" id="sort-by-date">Date</button>

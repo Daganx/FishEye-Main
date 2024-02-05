@@ -1,72 +1,67 @@
 class PhotographerAbout {
-    static displayPhotographerInfo(jsonData, targetPhotographerId) {
-        const photographer = jsonData.photographers.find(photographer => photographer.id === parseInt(targetPhotographerId));
+  static displayPhotographerInfo(jsonData, targetPhotographerId) {
+    const photographer = jsonData.photographers.find(
+      (photographer) => photographer.id === parseInt(targetPhotographerId)
+    );
 
-        if (photographer) {
-            const photographHeader = document.querySelector('.photograph-header');
-            
-            const infoContainer = document.createElement('section');
-            infoContainer.classList.add('photographer-info');
+    if (photographer) {
+      const photographHeader = document.querySelector(".photograph-header");
 
-            const nameElement = document.createElement('h1');
-            nameElement.textContent = photographer.name;
-            nameElement.setAttribute("tabIndex", '0');
-            nameElement.setAttribute("aria-label", `Nom du photographe : ${photographer.name}`);
+      const infoContainer = document.createElement("section");
+      infoContainer.classList.add("photographer-info");
 
-            const placeElement = document.createElement('p');
-            placeElement.textContent = `${photographer.city}, ${photographer.country}`;
+      const nameElement = document.createElement("h1");
+      nameElement.textContent = photographer.name;
+      nameElement.setAttribute("tabIndex", "0");
+      nameElement.setAttribute(
+        "aria-label",
+        `Nom du photographe : ${photographer.name}`
+      );
 
-            const taglineElement = document.createElement('p');
-            taglineElement.textContent = photographer.tagline;
+      const placeElement = document.createElement("p");
+      placeElement.textContent = `${photographer.city}, ${photographer.country}`;
+      placeElement.setAttribute("tabindex", "0");
 
-            const photoContainer = document.createElement('section');
-            photoContainer.classList.add('photographer-photo');
+      const taglineElement = document.createElement("p");
+      taglineElement.textContent = photographer.tagline;
+      taglineElement.setAttribute("tabindex", "0");
 
-            const portraitElement = document.createElement('img');
-            portraitElement.src = `assets/photographers/${photographer.portrait}`;
-            portraitElement.alt = `${photographer.name}'s portrait`;
-            portraitElement.classList.add('photographer-portrait');
+      const photoContainer = document.createElement("section");
+      photoContainer.classList.add("photographer-photo");
 
-            infoContainer.appendChild(nameElement);
-            infoContainer.appendChild(placeElement);
-            infoContainer.appendChild(taglineElement);
+      const portraitElement = document.createElement("img");
+      portraitElement.src = `assets/photographers/${photographer.portrait}`;
+      portraitElement.alt = `${photographer.name}'s portrait`;
+      portraitElement.classList.add("photographer-portrait");
+      portraitElement.setAttribute("tabindex", "0");
 
-            photoContainer.appendChild(portraitElement);
+      infoContainer.appendChild(nameElement);
+      infoContainer.appendChild(placeElement);
+      infoContainer.appendChild(taglineElement);
 
-            const buttonContainer = document.createElement('section');
-            buttonContainer.classList.add('button-container');
+      photoContainer.appendChild(portraitElement);
 
-            const contactButton = document.createElement('button');
-            contactButton.textContent = 'Contactez-moi';
-            contactButton.id = 'open-modal';
-            contactButton.classList.add('contact_button');
-            contactButton.setAttribute("aria-label", "Contactez-moi");
-            contactButton.setAttribute("tabindex", "0");
+      const buttonContainer = document.createElement("section");
+      buttonContainer.classList.add("button-container");
 
-            contactButton.addEventListener('click', () => {
-                const modal = document.getElementById("contact_modal");
-                modal.style.display = "flex";
-            });
-            
-            buttonContainer.appendChild(contactButton);
-            photographHeader.appendChild(infoContainer);
-            photographHeader.appendChild(buttonContainer);
-            photographHeader.appendChild(photoContainer);
-            
-            const modalBtnClose = document.getElementById('close-modal');
-            modalBtnClose.addEventListener("click", () => {
-                const modal = document.getElementById('contact_modal');
-                modal.style.display = "none";
-            });
-            modalBtnClose.addEventListener("keydown", (event) => {
-                const modal = document.getElementById('contact_modal');
-                if(event.key === 'Enter'){
-                    modal.style.display = "none";
-                }
-                
-            })
-        }
+      const contactButton = document.createElement("button");
+      contactButton.textContent = "Contactez-moi";
+      contactButton.id = "open-modal";
+      contactButton.classList.add("contact_button");
+      contactButton.setAttribute("aria-label", "Contactez-moi");
+      contactButton.setAttribute("tabindex", "0");
+
+      contactButton.addEventListener("click", () => {
+        const modal = document.getElementById("contact_modal");
+        modal.style.display = "flex";
+      });
+
+      buttonContainer.appendChild(contactButton);
+      photographHeader.appendChild(infoContainer);
+      photographHeader.appendChild(buttonContainer);
+      photographHeader.appendChild(photoContainer);
     }
+  }
 }
 
 export { PhotographerAbout };

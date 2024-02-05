@@ -232,7 +232,7 @@ form input {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(161, 143, 143, 0.8);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -260,7 +260,7 @@ form input {
 }
 .lightbox-next {
   position: absolute;
-  right: 12%;
+  right: 10%;
   top: 50%;
   color: #901c1c;
   font-size: 48px;
@@ -268,7 +268,7 @@ form input {
 }
 .lightbox-prev {
   position: absolute;
-  left: 12%;
+  left: 10%;
   top: 50%;
   color: #901c1c;
   font-size: 48px;
@@ -277,7 +277,7 @@ form input {
 .lightbox-close {
   position: absolute;
   top: 10%;
-  right: 12%;
+  right: 10%;
   color: #901c1c;
   font-size: 48px;
   cursor: pointer;
