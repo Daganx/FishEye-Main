@@ -1,4 +1,4 @@
-// Affichage de nos cartes pour chaque photographe (index)
+// Affichage de nos cartes pour chaque photographe (Index)
 class TemplateUserCard {
   static getUserCardDOM(photographer) {
     const photographerSection = document.querySelector(".photographer_section");

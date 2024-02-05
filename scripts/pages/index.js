@@ -1,7 +1,7 @@
+// Fichier qui éxecute nos functions pour la page Index.html
 import { Api } from "../api/api.js";
 import { TemplateUserCard } from "../templates/templateUserCard.js";
 import { Photographer } from "../classes/photographer.js";
-
 // Function ASYNC pour afficher les photographes
 async function displayPhotographers() {
   try {

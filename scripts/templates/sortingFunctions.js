@@ -48,11 +48,13 @@ class MediaSorting {
       mediaContainer.appendChild(figure);
     });
   }
-// Function du menu tri
+  // Function du menu tri
   static initSortingButtons() {
     const sortingButtons = document.getElementById("sorting-buttons");
     const sortingOptions = document.getElementById("sorting-options");
-    const showSortingOptionsButton = document.getElementById("show-sorting-options");
+    const showSortingOptionsButton = document.getElementById(
+      "show-sorting-options"
+    );
 
     let lastSelectedButton = null;
 
@@ -96,7 +98,7 @@ class MediaSorting {
           }
         }
       }
-    })
+    });
   }
 }
 

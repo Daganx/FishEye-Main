@@ -6,7 +6,7 @@ function displayName(jsonData, targetPhotographerId) {
   );
   modalName.textContent = `${photographer.name}`;
 }
-// AddEventListener : 
+// AddEventListener :
 const modalBtnClose = document.getElementById("close-modal");
 modalBtnClose.addEventListener("click", () => {
   const modal = document.getElementById("contact_modal");
@@ -35,7 +35,7 @@ const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$");
 const regExpEmail = new RegExp(
   "^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$"
 );
-// Fonctions de validation 
+// Fonctions de validation
 function checkFirstName(input) {
   if (input.value.length >= 2 && regExpText.test(input.value)) {
     return true;
@@ -57,8 +57,8 @@ function checkEmail(input) {
     return false;
   }
 }
-function checkMessage(input){
-  if(input.value.length >= 5){
+function checkMessage(input) {
+  if (input.value.length >= 5) {
     return true;
   } else {
     return false;
@@ -72,7 +72,7 @@ form.addEventListener("submit", (event) => {
   const isFirstNameValid = checkFirstName(firstNameInput);
   const isLastNameValid = checkLastName(lastNameInput);
   const isEmailValid = checkEmail(emailInput);
-  const isMessageValid = checkMessage(messageInput)
+  const isMessageValid = checkMessage(messageInput);
   if (isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid) {
     console.log(`
                 Prénom: ${firstNameInput.value}

@@ -30,7 +30,7 @@ class Lightbox {
     this.lightboxContainer = document.createElement("section");
     this.lightboxContainer.classList.add("lightbox-container");
     this.lightboxContainer.setAttribute("aria-label", "image closeup view");
-    this.lightboxContainer.setAttribute("role", "dialog")
+    this.lightboxContainer.setAttribute("role", "dialog");
     document.body.appendChild(this.lightboxContainer);
 
     this.lightboxContent = document.createElement("section");
@@ -40,8 +40,8 @@ class Lightbox {
     this.btnClose = document.createElement("i");
     this.btnClose.classList.add("lightbox-close");
     this.btnClose.innerHTML = '<i class="fa-solid fa-times"></i>';
-    this.btnClose.setAttribute("aria-label","close dialog");
-    this.btnClose.setAttribute("role", "button")
+    this.btnClose.setAttribute("aria-label", "close dialog");
+    this.btnClose.setAttribute("role", "button");
     this.lightboxContainer.appendChild(this.btnClose);
 
     this.btnNext = document.createElement("i");
@@ -88,7 +88,7 @@ class Lightbox {
     mediaElement.dataset.title = currentTrigger.dataset.title;
     mediaElement.classList.add("lightbox-trigger");
     mediaElement.setAttribute("aria-label", `${mediaElement.dataset.title}`);
-    
+
     this.lightboxContent.appendChild(mediaElement);
     this.lightboxContent.appendChild(this.mediaNameContainer);
     // Condition si élément = vidéo
@@ -100,7 +100,7 @@ class Lightbox {
     const mediaName = currentTrigger.dataset.title || "";
     this.mediaNameContainer.textContent = mediaName;
   }
-  // Mise en place de nos écoutes pour la navigation 
+  // Mise en place de nos écoutes pour la navigation
   setupEventListeners() {
     this.btnClose.addEventListener("click", () => this.closeLightbox());
     this.btnNext.addEventListener("click", () => this.nextMedia());

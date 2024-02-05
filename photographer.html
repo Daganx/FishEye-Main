@@ -20,23 +20,21 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header role="banner">
-      <a href="index.html" alt="Fisheye Home Page" aria-label="lien vers la page d'accueil fishEye">
+    <header>
+      <a href="index.html" aria-label="lien vers la page d'accueil fishEye">
         <img
           src="assets/images/logo.png"
           class="logo"
           alt="logo Fisheye"
           aria-label="logo Fisheye"
-          role="img"
         />
       </a>
     </header>
     <!-- MAIN -->
-    <main id="main" role="main">
+    <main id="main">
       <!-- PHOTOGRAPH HEADER -->
       <section
         class="photograph-header"
-        role="region"
         aria-label="section information de notre photographe"
       ></section>
 
@@ -58,7 +56,7 @@
             />
           </header>
           <!-- FORM -->
-          <form name="reserve" action="photographer.html" method="get" role="form">
+          <form name="reserve" action="photographer.html" method="get">
             <section class="formData">
               <label for="firstname">Prénom</label>
               <input
@@ -95,30 +93,30 @@
                 name="message"
               />
             </section>
-            <button aria-label="Envoyer" role="button" class="contact_button">Envoyer</button>
+            <button aria-label="Envoyer" class="contact_button">Envoyer</button>
           </form>
         </section>
       </section>
 
-      <section role="region" class="sorting-container">
+      <section class="sorting-container">
         <p>Trier par</p>
-        <menu id="sorting-buttons">
+        <div id="sorting-buttons">
           <button aria-haspopup="true" role="listbox" aria-expanded="true" id="show-sorting-options">----</button>
           <li id="sorting-options" class="sorting-options">
             <button role="button" aria-label="Tri par likes" id="sort-by-likes">Popularité</button>
             <button role="button" aria-label="Tri par date" id="sort-by-date">Date</button>
             <button role="button" aria-label="Tri par titre" id="sort-by-title">Titre</button>
           </li>
-        </menu>
+        </div>
       </section>
 
       <!-- MEDIA CONTAINER -->
-      <section role="region" aria-label="Section des médias" id="media-container"></section>
+      <section aria-label="Section des médias" id="media-container"></section>
       <!-- STATS SECTION -->
-      <section role="region" aria-label="Section des stats du photographe" class="stats-section"></section>
+      <section aria-label="Section des stats du photographe" class="stats-section"></section>
     </main>
     <!-- SCRIPT -->
-    <script type="module" src="scripts/pages/photographer.js" defer></script>
-    <script type="module" src="scripts/utils/contactForm.js" defer></script>
+    <script type="module" src="scripts/pages/photographer.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

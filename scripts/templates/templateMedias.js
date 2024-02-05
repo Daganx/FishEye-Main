@@ -1,9 +1,7 @@
 import { MediaFactory } from "../factory/mediaFactory.js";
 import { VideoMedia } from "../classes/media.js";
-import {
-  incrementTotalLikes,
-  decrementTotalLikes,
-} from "../templates/photographerStats.js";
+import { toggleLikes } from "../templates/likeFunctions.js";
+
 // Affichage des médias du photographe
 class TemplateMedias {
   static displayMedias(jsonData, targetPhotographerId) {
@@ -41,7 +39,7 @@ class TemplateMedias {
         mediaElement.classList.add("lightbox-trigger");
         mediaElement.setAttribute("data-id", media.id);
         mediaElement.setAttribute("tabindex", "0");
-        mediaElement.setAttribute("aria-label", `${media.title}`)
+        mediaElement.setAttribute("aria-label", `${media.title}`);
 
         const figcaptionElement = document.createElement("figcaption");
         figcaptionElement.classList.add("media-figcaption");
@@ -63,7 +61,7 @@ class TemplateMedias {
         const likeIcon = document.createElement("i");
         likeIcon.classList.add("fa-regular", "fa-heart");
         likeIcon.setAttribute("tabindex", "0");
-        likeIcon.setAttribute("aria-label", "appuyez sur entrer pour liker")
+        likeIcon.setAttribute("aria-label", "appuyez sur entrer pour liker");
 
         likesContainer.appendChild(likesCountElement);
         likesContainer.appendChild(likeIcon);
@@ -72,47 +70,18 @@ class TemplateMedias {
         mediaFigure.appendChild(figcaptionElement);
         mediaContainer.appendChild(mediaFigure);
 
+        // AddEventListener pour le like
         likeIcon.addEventListener("click", () => {
           // Récupère l'identifiant unique du média
           const mediaId = mediaElement.getAttribute("data-id");
-          toggleLikes(mediaId);
+          toggleLikes(media, mediaId, likesCountElement, likeIcon);
         });
         likeIcon.addEventListener("keydown", (event) => {
           const mediaId = mediaElement.getAttribute("data-id");
           if (event.key === "Enter") {
-            toggleLikes(mediaId);
+            toggleLikes(media, mediaId, likesCountElement, likeIcon);
           }
         });
-
-        function toggleLikes(mediaId) {
-          const mediaElement = document.querySelector(`[data-id="${mediaId}"]`);
-          const likesElement = mediaElement
-            .closest(".media-figure")
-            .querySelector(".media-likes");
-
-          if (media.isLiked) {
-            // Si déjà like, appelle la fonction pour décrémenter les likes du média
-            decrementLikes(mediaId);
-            decrementTotalLikes();
-          } else {
-            incrementLikes(mediaId);
-            incrementTotalLikes();
-          }
-          // Inverse l'état du like
-          media.isLiked = !media.isLiked;
-        }
-
-        function incrementLikes(mediaId) {
-          media.likes++;
-          likesCountElement.textContent = media.likes;
-          likeIcon.classList.replace("fa-regular", "fas");
-        }
-
-        function decrementLikes(mediaId) {
-          media.likes--;
-          likesCountElement.textContent = media.likes;
-          likeIcon.classList.replace("fas", "fa-regular");
-        }
       }
     }
   }
