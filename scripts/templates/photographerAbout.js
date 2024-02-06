@@ -1,3 +1,4 @@
+// Affichage des informations du photographe dans section Header
 class PhotographerAbout {
   static displayPhotographerInfo(jsonData, targetPhotographerId) {
     const photographer = jsonData.photographers.find(

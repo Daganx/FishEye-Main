@@ -1,3 +1,4 @@
+// Tri des médias en fonction du tri sélectionné
 class MediaSorting {
   static sortMedia(mediaContainerId, sortBy) {
     const mediaContainer = document.getElementById(mediaContainerId);
@@ -72,7 +73,7 @@ class MediaSorting {
           if (lastSelectedButton !== null) {
             lastSelectedButton.style.display = "block";
           }
-          showSortingOptionsButton.innerHTML = `${event.target.textContent}`;
+          showSortingOptionsButton.innerHTML = `${event.target.textContent} ▼`;
           // Mise à jour des boutons disponibles
           const availableButtons = Array.from(sortingOptions.children).filter(
             (button) => button.tagName === "BUTTON"

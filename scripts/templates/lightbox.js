@@ -1,4 +1,4 @@
-// Création de la class Lightbox qui crée une nouvelle instance sur l'index de nos médias
+// Création de la class Lightbox avec AddEventListener sur l'index
 class Lightbox {
   static init() {
     const mediaTriggers = Array.from(
