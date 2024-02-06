@@ -9,7 +9,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-inner-declarations": "warn",
         "no-unused-vars":"warn"
     }
 }

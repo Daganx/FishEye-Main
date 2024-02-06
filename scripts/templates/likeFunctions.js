@@ -2,6 +2,7 @@
 import { incrementTotalLikes, decrementTotalLikes } from "../templates/photographerStats.js";
 function toggleLikes(media, mediaId, likesCountElement, likeIcon) {
     const mediaElement = document.querySelector(`[data-id="${mediaId}"]`);
+    // eslint-disable-next-line no-unused-vars
     const likesElement = mediaElement
       .closest(".media-figure")
       .querySelector(".media-likes");
