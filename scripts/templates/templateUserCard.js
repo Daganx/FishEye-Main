@@ -27,11 +27,11 @@ class TemplateUserCard {
     h2.setAttribute("tabIndex", "0");
 
     h2.addEventListener("click", () => {
-      window.location.href = `/photographer.html?id=${photographer.id}`;
+      window.location.href = `./photographer.html?id=${photographer.id}`;
     });
     h2.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
-        window.location.href = `/photographer.html?id=${photographer.id}`;
+        window.location.href = `./photographer.html?id=${photographer.id}`;
       }
     });
 
